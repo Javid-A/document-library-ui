@@ -11,6 +11,7 @@ export const downloadDocument = async (documentName: string) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        withCredentials: true,
         responseType: "blob",
       }
     );
