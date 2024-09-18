@@ -83,7 +83,12 @@ const FileUploadComponent: React.FC<{
         onChange={handleFileChange}
       />
 
-      <Button variant="contained" color="primary" onClick={handleButtonClick}>
+      <Button
+        sx={{ mb: 2 }}
+        variant="contained"
+        color="primary"
+        onClick={handleButtonClick}
+      >
         Select Files
       </Button>
 

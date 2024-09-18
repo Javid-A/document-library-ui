@@ -182,6 +182,22 @@ const Registration: React.FC = () => {
             Register
           </Button>
         </Box>
+        <Box>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              mt: 2,
+              textAlign: "center",
+              cursor: "pointer",
+              "&:hover": {
+                color: "blue",
+              },
+            }}
+            onClick={() => navigate("/login")}
+          >
+            Already have an account? Login here
+          </Typography>
+        </Box>
       </Paper>
     </Container>
   );

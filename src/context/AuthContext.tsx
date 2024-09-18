@@ -34,6 +34,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   useEffect(() => {
     const fetchUser = async () => {
       try {
+        const token = document.cookie.split("=")[1];
+
         const response = await axios.get(
           `${BASE_URL}/api/accounts/get-logged-user`,
           {
@@ -67,11 +69,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
       const result = response.data;
 
-      document.cookie = `token=${result.data.token}; path=/; Secure; SameSite=None`;
       setUser(result.data);
     } catch (error) {
       console.error("Login error:", error);
-      throw error;
     }
   };
 
@@ -88,7 +88,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       setUser(null);
     } catch (error) {
       console.error("Logout error:", error);
-      throw error;
     }
   };
 

@@ -1,7 +1,7 @@
 export interface Document {
   name: string;
   type: string;
-  preview: string;
+  thumbnailURL: string;
   createdAt: string;
   updatedAt: string;
   downloads: number;

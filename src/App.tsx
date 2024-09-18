@@ -6,17 +6,25 @@ import PrivateRoute from "./utilities/PrivateRoute";
 import Profile from "./pages/profile";
 import Layout from "./components/Layout";
 import Registration from "./pages/registration";
+import SharedFile from "./pages/SharedFile";
+import PublicRoute from "./utilities/PublicRoute";
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/registration" element={<Registration />} />
-
-          <Route element={<PrivateRoute element={<Layout />} />}>
-            <Route path="/" element={<Profile />} />
+          <Route element={<Layout />}>
+            <Route
+              path="/login"
+              element={<PublicRoute element={<LoginPage />} />}
+            />
+            <Route path="/get-shared-file" element={<SharedFile />} />
+            <Route
+              path="/registration"
+              element={<PublicRoute element={<Registration />} />}
+            />
+            <Route path="/" element={<PrivateRoute element={<Profile />} />} />
           </Route>
         </Routes>
       </Router>

@@ -6,11 +6,12 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import logo from "../assets/logo.png";
 import Link from "@mui/material/Link";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { useState } from "react";
 
 const Header: React.FC = () => {
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -21,6 +22,7 @@ const Header: React.FC = () => {
       console.error("Logout failed:", error);
     }
   };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -44,13 +46,15 @@ const Header: React.FC = () => {
           >
             Document Library
           </Typography>
-          <Button
-            variant="contained"
-            sx={{ color: "black", background: "whitesmoke" }}
-            onClick={handleLogout}
-          >
-            Logout
-          </Button>
+          {user && (
+            <Button
+              variant="contained"
+              sx={{ color: "black", background: "whitesmoke" }}
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
